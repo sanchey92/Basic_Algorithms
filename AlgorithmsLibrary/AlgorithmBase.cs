@@ -9,6 +9,13 @@ namespace AlgorithmsLibrary
         public int ComparisonCount { get; protected set; } = 0;
         public List<T> Items { get; set; } = new List<T>();
 
+        public AlgorithmBase(IEnumerable<T> items)
+        {
+            Items.AddRange(items);
+        }
+        
+        public AlgorithmBase() { }
+
         protected void Swap(int positionA, int positionB)
         {
             if (positionA < Items.Count && positionB < Items.Count)
