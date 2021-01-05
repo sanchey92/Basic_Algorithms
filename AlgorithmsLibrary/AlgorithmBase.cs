@@ -33,5 +33,11 @@ namespace AlgorithmsLibrary
             SwapCount = 0;
             Items.Sort();
         }
+
+        protected int Compare(T a, T b)
+        {
+            ComparisonCount++;
+            return a.CompareTo(b);
+        }
     }
 }
