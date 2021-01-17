@@ -5,27 +5,25 @@ namespace AlgorithmsLibrary
 {
     public class AlgorithmBase<T> where T : IComparable
     {
-        public int SwapCount { get; protected set; } = 0;
-        public int ComparisonCount { get; protected set; } = 0;
-        public List<T> Items { get; set; } = new List<T>();
+        protected int SwapCount { get; set; } = 0;
+        protected int ComparisonCount { get; set; } = 0;
+        protected List<T> Items { get; set; } = new List<T>();
 
-        public AlgorithmBase(IEnumerable<T> items)
+        protected AlgorithmBase(IEnumerable<T> items)
         {
             Items.AddRange(items);
         }
-        
-        public AlgorithmBase() { }
+
+        protected AlgorithmBase() { }
 
         protected void Swap(int positionA, int positionB)
         {
-            if (positionA < Items.Count && positionB < Items.Count)
-            {
-                var temp = Items[positionA];
-                Items[positionA] = Items[positionB];
-                Items[positionB] = temp;
+            if (positionA >= Items.Count || positionB >= Items.Count) return;
+            var temp = Items[positionA];
+            Items[positionA] = Items[positionB];
+            Items[positionB] = temp;
 
-                SwapCount++;
-            }
+            SwapCount++;
         }
 
         public virtual void Sort()
